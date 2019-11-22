@@ -1,0 +1,24 @@
+
+
+#What is the MNIST dataset?
+
+from tensorflow.examples.tutorials.mnist import input_data
+mnist = input_data.read_data_sets("/tmp/data/", one_hot = True)
+
+      a. Basically it has 4 folders, with train dataset of 55000 IMAGES and corresponding LABELS encoded as one-hot.
+         thus 5500 x Images (764 pixels) and 5500 x labels ( 100000000, 010000000, 001000000, 000100000 ....)
+      
+                 
+      b. The other part is the train data which is the same as above but with 1000 samples.
+
+Simple analysis,
+
+mnist.train.images[0]                                array of values in 764 x 1 fashion.
+
+mnist.train.images[0], reshape=(28,28)               something like [ [ 0, 0, 1, 0 ,0] 
+                                                                      [ 0, 0, 1, 0 ,0]
+                                                                      [ 0, 0, 1, 0 ,0]
+                                                                      [ 0, 0, 1, 0 ,0]
+                                                                      [ 0, 0, 1, 0 ,0] ]
+                                                                 
+plt.show(mnist.train.images[0], reshape=(28,28))      will give the  picture in blue(default) CMAP.                                                                  
