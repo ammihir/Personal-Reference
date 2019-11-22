@@ -1,0 +1,56 @@
+BASIC
+
+df['Year']=df['Year'].map(pd.to_datetime)-Change date/time to STD ***
+
+df1 = df[['a','b']]    - Select a & b col
+
+
+SMALL PANDAS FUNCTIONS:
+
+del df['column_name']                       # Deleting a column
+
+df.set_index(‘Col_Name’,inplace=True)       # Column as index/key, axis=1
+
+df.sort_index(‘Col_Name’,inplace=True)      # Sorting
+
+df.sort_values(“ “, ascending=True)
+
+df.drop([‘col_1’,‘col_2’], axis=0)          # Will drop, first 3 rows 
+df.drop(columns=['blah'])
+df.iloc[:, :-6]      	                      # Will delete the last 6 columns.
+
+
+pd.set_option('display.max_columns', 500)   # Setting of no of cols to be seen
+
+
+df.dropna(axis=1 or 0)                      # similar to del a column
+
+df_cols=['Year','Make','Engine','State']    # will replace all columns
+df.columns= df_cols
+
+df.loc[df["Col"]=='identifier']             # lists all the rows associated with the identifier in the df  
+
+df[‘Col Name’].astype(int)                  # Changes the datatype from str to int.
+
+
+col = data[Col_to_be_moved']                # creating extra CLASS to Last col   
+data.insert(data.columns.get_loc('whichever_col_comes_before') + 1, col.name, col, allow_duplicates=True)
+
+data.insert(location of last col,current column, ‘col’, random shit)
+
+
+
+
+df1 = df.pop('b')	 	                        # remove column b and store it in df1
+df2 = df.pop('x')	 	                        # remove column x and store it in df2
+
+
+
+
+GROUPBY
+
+gb=df.groupby(‘Province’)                   # can be used to groupby multiple cols
+   
+gb.get_group(‘ON’)
+
+print(df.groupby('col_name').size())        # can be used to get the number of all classes
