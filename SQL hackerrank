@@ -1,5 +1,6 @@
 #Interviews - https://www.hackerrank.com/challenges/interviews/problem
 
+*************************************SOLUTION************************************************
 
 select u1.contest_id, u1.hacker_id, u1.name, sum(l1.total_submissions), 
 sum(l1.total_accepted_submissions), sum(l2.total_views), sum(l2.total_unique_views)
@@ -35,3 +36,6 @@ group by u1.contest_id, u1.hacker_id, u1.name
 
 having 
 (sum(l1.total_submissions)>0 and sum(l1.total_accepted_submissions)>0 and sum(l2.total_views)>0 and sum(l2.total_unique_views)>0)
+
+
+
