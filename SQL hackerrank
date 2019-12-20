@@ -32,4 +32,4 @@ ON u1.challenge_id = l2.challenge_id
 group by u1.contest_id, u1.hacker_id, u1.name
 
 having 
-(sum(l1.total_submissions)>0 and sum(l1.total_accepted_submissions)>0 and sum(l2.total_views)>0 sum(l2.total_unique_views)>0)
+(sum(l1.total_submissions)>0 and sum(l1.total_accepted_submissions)>0 and sum(l2.total_views)>0 and sum(l2.total_unique_views)>0)
