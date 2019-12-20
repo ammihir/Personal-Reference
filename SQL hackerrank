@@ -1,4 +1,4 @@
-#Interviews - https://www.hackerrank.com/challenges/interviews/problem
+                                                        1.Interviews 
 
 ***SOLUTION***
 
@@ -40,7 +40,7 @@ having
 
 
 
-#TRIANGLES 
+                                                    2.TRIANGLES 
 
 ***SOLUTION***
 
@@ -53,6 +53,18 @@ select
     end
 from TRIANGLES  
 
+                                                    3.The PADS
+                                                    
 
+(select CONCAT(Name,'(',substr(Occupation,1,1),')')                         # brackets are very important, also LIMIT is needed                                                                         
+from OCCUPATIONS                                                              if you are using order by,or else ORDER BY doesnt                                                               
+order by Name ASC                                                             work   
+LIMIT 18)
 
+UNION 
 
+(SELECT Concat('There are a total of ',count(Occupation),' ',lower(Occupation),'s.')
+from OCCUPATIONS
+group by Occupation
+ order by count(Occupation),lower(Occupation)
+ LIMIT 4)
