@@ -1,0 +1,35 @@
+#Interviews - https://www.hackerrank.com/challenges/interviews/problem
+
+
+select u1.contest_id, u1.hacker_id, u1.name, sum(l1.total_submissions), sum(l1.total_accepted_submissions), sum(l2.total_views), sum(l2.total_unique_views)
+
+from
+(select t1.contest_id as contest_id, t1.hacker_id as hacker_id, t1.name as name, challenge_id
+from 
+(select Contests.contest_id as contest_id, hacker_id, name, Colleges.college_id as college_id
+from Contests
+join Colleges on
+Contests.contest_id = Colleges.contest_id)t1
+join Challenges ON
+t1.college_id = Challenges.college_id)u1
+
+JOIN
+(select Challenges.challenge_id as challenge_id, sum(total_submissions)as total_submissions, sum(total_accepted_submissions) as total_accepted_submissions
+from Challenges 
+LEFT JOIN Submission_Stats ON
+Challenges.challenge_id = Submission_Stats.challenge_id
+Group by Challenges.challenge_id)l1
+ON u1.challenge_id  = l1.challenge_id
+
+JOIN
+(select Challenges.challenge_id as challenge_id, sum(total_views) as total_views, sum(total_unique_views) as total_unique_views
+from Challenges 
+LEFT JOIN View_Stats ON
+Challenges.challenge_id = View_Stats.challenge_id
+Group by Challenges.challenge_id)l2
+ON u1.challenge_id = l2.challenge_id
+
+group by u1.contest_id, u1.hacker_id, u1.name
+
+having 
+(sum(l1.total_submissions)>0 and sum(l1.total_accepted_submissions)>0 and sum(l2.total_views)>0 sum(l2.total_unique_views)>0)
