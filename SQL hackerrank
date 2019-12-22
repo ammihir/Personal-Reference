@@ -68,3 +68,18 @@ from OCCUPATIONS
 group by Occupation
  order by count(Occupation),lower(Occupation)
  LIMIT 4)
+
+
+
+                                                     4.Weather Observation Station 20
+
+****HOW TO USE THE ROWID TO PASS IT IN WHERE CLAUSE***
+
+select round(t1.LAT_N,4)
+
+from
+(select @rowid:=@rowid+1 as rowid, LAT_N
+from STATION, (select @rowid := 0) as init
+order by LAT_N)t1
+
+where rowid = (select round(count(*)/2) from STATION)
