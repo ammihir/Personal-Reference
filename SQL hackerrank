@@ -83,3 +83,21 @@ from STATION, (select @rowid := 0) as init
 order by LAT_N)t1
 
 where rowid = (select round(count(*)/2) from STATION)
+
+
+                                                     5.The Report
+
+*****AS PER UNDERSTANDING, when should be followed by Grade<7 then 'NULL', but somehow it doesnt seem to work and
+the result is visible when Grade>7. Need to understand why this is the case*****
+
+select 
+case Name 
+when Grade>7 then 'NULL'
+else Name
+end,
+Grade,Marks
+from Students 
+JOIN Grades
+ON Students.Marks between min_mark and max_mark
+
+order by Grade DESC, Name ASC
