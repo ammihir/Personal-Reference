@@ -90,6 +90,8 @@ where rowid = (select round(count(*)/2) from STATION)
 *****AS PER UNDERSTANDING, when should be followed by Grade<7 then 'NULL', but somehow it doesnt seem to work and
 the result is visible when Grade>7. Need to understand why this is the case*****
 
+***this thing is a little tricky***
+
 select 
 case Name 
 when Grade>7 then 'NULL'
