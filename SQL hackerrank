@@ -103,3 +103,16 @@ JOIN Grades
 ON Students.Marks between min_mark and max_mark
 
 order by Grade DESC, Name ASC
+
+
+                                                     5.The Blunder
+                                                     
+***LEARNINGS***
+how to convert the data type adhoc from 'INT' to 'CHAR' or vice versa.
+
+
+select ceil(avg(t1.Salary)-avg(t1.Mistake))
+
+from
+(select Name, Salary,replace(CONVERT(Salary,char),'0','') as Mistake
+from EMPLOYEES)t1
