@@ -87,22 +87,18 @@ where rowid = (select round(count(*)/2) from STATION)
 
                                                      5.The Report
 
-*****AS PER UNDERSTANDING, when should be followed by Grade<7 then 'NULL', but somehow it doesnt seem to work and
-the result is visible when Grade>7. Need to understand why this is the case*****
+**SIMPLE ELEGANT SOLUTION**
 
-***this thing is a little tricky***
+select case 
+when Grade>=8 then Name
+when Grade<=7 then NULL
 
-select 
-case Name 
-when Grade>7 then 'NULL'
-else Name
 end,
-Grade,Marks
+Grade, Marks
 from Students 
 JOIN Grades
-ON Students.Marks between min_mark and max_mark
-
-order by Grade DESC, Name ASC
+ON Students.Marks between Grades.Min_Mark and Grades.Max_Mark
+order by Grade DESC,Name ASC, Marks ASC
 
 
                                                      5.The Blunder
