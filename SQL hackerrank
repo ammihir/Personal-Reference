@@ -112,3 +112,16 @@ select ceil(avg(t1.Salary)-avg(t1.Mistake))
 from
 (select Name, Salary,replace(CONVERT(Salary,char),'0','') as Mistake
 from EMPLOYEES)t1
+
+
+                                                     6.Binary Tree Nodes
+                                                     
+select N,
+case 
+when P is null then 'Root'
+when B.N in (select P from BST) then 'Inner'
+else 'Leaf'
+end
+from BST as B
+order by N                                                     
+
