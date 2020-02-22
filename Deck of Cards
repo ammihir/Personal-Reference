@@ -1,11 +1,11 @@
-import random
-
 class CARD_DECK:
+    suits= ['Hearts', 'Spade', 'Diamond','Flower']
+    full_deck=[] 
         
-    def __init__(self):
-        suits= ['Hearts', 'Spade', 'Diamond','Flower']
-        full_deck=[]  
+    def __init__(self):  
         
+        suits = self.suits
+        full_deck = self.full_deck
         for suit in suits:
             for i in range(1,14):
                 cur_card=str(i)+suit
@@ -13,10 +13,11 @@ class CARD_DECK:
     
     
     def display(self):
+        full_deck = self.full_deck
         print(full_deck)
     
     def shuffle(self): 
-        
+        full_deck = self.full_deck
         for i in range(0,51):
            
             x=random.randint(0,51)   #selecting a random card to be replaced by the ith card.   
@@ -24,11 +25,12 @@ class CARD_DECK:
        
                         
     def draw(self,num):
-        
+        full_deck = self.full_deck
         list_of_draw=[]
         for i in range(num):
             cur_draw=random.choice(full_deck)
             list_of_draw.append(cur_draw)
+        print(list_of_draw)
             
 
 
