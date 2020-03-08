@@ -123,5 +123,29 @@ when B.N in (select P from BST) then 'Inner'
 else 'Leaf'
 end
 from BST as B
-order by N                                                     
+order by N                                          
+
+                                                    7.Top Competitors
+
+
+select t4.hacker_id, Hackers.name
+from
+(select t3.hacker_id as hacker_id, t3.count as count
+from
+(select t2.hacker_id as hacker_id, count(*) as count
+from
+
+(select  hacker_id, Submissions.score as score1, t1.score as score2
+    from Submissions JOIN 
+        (select Challenges.challenge_id as challenge_id, Difficulty.score as score
+        from Challenges JOIN Difficulty ON
+        Challenges.difficulty_level = Difficulty.difficulty_level) t1
+    ON Submissions.challenge_id = t1.challenge_id
+having  Submissions.score = t1.score)t2
+group by hacker_id)t3
+where count > 1
+) t4
+JOIN Hackers ON 
+t4.hacker_id = Hackers.hacker_id
+order by count DESC, t4.hacker_id ASC
 
